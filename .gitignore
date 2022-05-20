@@ -1,2 +1,9 @@
 *.csv
 *.pyc
+*.tgz
+artifacts/**
+build/**
+dist/**
+src/house_price.egg-info/**
+log/**
+outputs/**
