@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="English" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="English" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>house_price package &mdash; house_price 0.3 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> house_price
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">house_price package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-house_price.ingest_data">house_price.ingest_data module</a></li>
+<li><a class="reference internal" href="#module-house_price.logger">house_price.logger module</a></li>
+<li><a class="reference internal" href="#module-house_price.score">house_price.score module</a></li>
+<li><a class="reference internal" href="#module-house_price.train">house_price.train module</a></li>
+<li><a class="reference internal" href="#module-house_price">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">house_price</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>house_price package</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/house_price.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <section id="house-price-package">
+<h1>house_price package<a class="headerlink" href="#house-price-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-house_price.ingest_data">
+<span id="house-price-ingest-data-module"></span><h2>house_price.ingest_data module<a class="headerlink" href="#module-house_price.ingest_data" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.ingest_data.fetch_housing_data">
+<span class="sig-prename descclassname"><span class="pre">house_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">fetch_housing_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">housing_url</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'https://raw.githubusercontent.com/ageron/handson-ml/master/datasets/housing/housing.tgz'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">housing_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/raw/housing'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.ingest_data.fetch_housing_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.ingest_data.get_path">
+<span class="sig-prename descclassname"><span class="pre">house_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">get_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#house_price.ingest_data.get_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.ingest_data.income_cat_proportions">
+<span class="sig-prename descclassname"><span class="pre">house_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">income_cat_proportions</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.ingest_data.income_cat_proportions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.ingest_data.load_housing_data">
+<span class="sig-prename descclassname"><span class="pre">house_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">load_housing_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">housing_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'data/raw/housing'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.ingest_data.load_housing_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.ingest_data.parse_args">
+<span class="sig-prename descclassname"><span class="pre">house_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#house_price.ingest_data.parse_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.ingest_data.preprocess">
+<span class="sig-prename descclassname"><span class="pre">house_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">preprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">strat_train_set</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.ingest_data.preprocess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.ingest_data.save_preprocessed">
+<span class="sig-prename descclassname"><span class="pre">house_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">save_preprocessed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">train_X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">test_y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">processed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.ingest_data.save_preprocessed" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.ingest_data.train_test">
+<span class="sig-prename descclassname"><span class="pre">house_price.ingest_data.</span></span><span class="sig-name descname"><span class="pre">train_test</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">housing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.ingest_data.train_test" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-house_price.logger">
+<span id="house-price-logger-module"></span><h2>house_price.logger module<a class="headerlink" href="#module-house_price.logger" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.logger.configure_logger">
+<span class="sig-prename descclassname"><span class="pre">house_price.logger.</span></span><span class="sig-name descname"><span class="pre">configure_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cfg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">console</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEBUG'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.logger.configure_logger" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-house_price.score">
+<span id="house-price-score-module"></span><h2>house_price.score module<a class="headerlink" href="#module-house_price.score" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.score.get_path">
+<span class="sig-prename descclassname"><span class="pre">house_price.score.</span></span><span class="sig-name descname"><span class="pre">get_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#house_price.score.get_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.score.load_data">
+<span class="sig-prename descclassname"><span class="pre">house_price.score.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.score.load_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.score.load_models">
+<span class="sig-prename descclassname"><span class="pre">house_price.score.</span></span><span class="sig-name descname"><span class="pre">load_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.score.load_models" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.score.parse_args">
+<span class="sig-prename descclassname"><span class="pre">house_price.score.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#house_price.score.parse_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.score.score">
+<span class="sig-prename descclassname"><span class="pre">house_price.score.</span></span><span class="sig-name descname"><span class="pre">score</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">models</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.score.score" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.score.scoring">
+<span class="sig-prename descclassname"><span class="pre">house_price.score.</span></span><span class="sig-name descname"><span class="pre">scoring</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">X_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y_test</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lin_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forest_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_search</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.score.scoring" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-house_price.train">
+<span id="house-price-train-module"></span><h2>house_price.train module<a class="headerlink" href="#module-house_price.train" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.train.get_path">
+<span class="sig-prename descclassname"><span class="pre">house_price.train.</span></span><span class="sig-name descname"><span class="pre">get_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#house_price.train.get_path" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.train.load_data">
+<span class="sig-prename descclassname"><span class="pre">house_price.train.</span></span><span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.train.load_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.train.model">
+<span class="sig-prename descclassname"><span class="pre">house_price.train.</span></span><span class="sig-name descname"><span class="pre">model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lin_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tree_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">forest_reg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid_search</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.train.model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.train.parse_args">
+<span class="sig-prename descclassname"><span class="pre">house_price.train.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#house_price.train.parse_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.train.rem_artifacts">
+<span class="sig-prename descclassname"><span class="pre">house_price.train.</span></span><span class="sig-name descname"><span class="pre">rem_artifacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.train.rem_artifacts" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="house_price.train.train">
+<span class="sig-prename descclassname"><span class="pre">house_price.train.</span></span><span class="sig-name descname"><span class="pre">train</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">housing_prepared</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">housing_labels</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#house_price.train.train" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="module-house_price">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-house_price" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2022, Pragathieshwaran
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
