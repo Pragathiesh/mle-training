@@ -1,10 +1,2 @@
 *.csv
 *.pyc
-*.tgz
-artifacts/**
-build/**
-*.egg-info/**
-/dist/**
-mlruns/**
-.flake8
-log/**

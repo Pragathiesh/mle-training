@@ -7,16 +7,6 @@ The following techniques have been used:
  - Linear regression
  - Decision Tree
  - Random Forest
- - Best model using Grid Search
-
-## Installation:
-### Prerequisites:
-Prerequisite dependencies are stored in `deploy/conda/linux_cpu_py39.yml`. To setup the conda environment:
-
-`$ conda env create --file deploy/conda/linux_cpu_py39.yml`
-
-`$ conda activate mle-dev`
-
 
 ## Steps performed
  - We prepare and clean the data. We check and impute for missing values.
@@ -25,14 +15,4 @@ Prerequisite dependencies are stored in `deploy/conda/linux_cpu_py39.yml`. To se
  - All the above said modelling techniques are tried and evaluated. The final metric used to evaluate is mean squared error.
 
 ## To excute the script
-
-### To download and process data:
-`$ python src/ingest_data.py`
-### To train the models:
-`$ python src/train.py`
-### To score trained models:
-`$ python src/score.py`
-### Note:
-You can get information on command line arguments for each of the above scripts using `-h` or `--help`. For example: 
-
-`$ python src/train.py --help`
+python < scriptname.py >
