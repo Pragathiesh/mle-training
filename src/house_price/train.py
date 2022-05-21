@@ -1,21 +1,27 @@
-import mlflow
-import mlflow.sklearn
+"""
+This module contains helper functions to train models.
+Can be run standalone with commandline arguments for dataset path and models directory.
+"""
 import argparse
 import os
-import shutil
-import pandas as pd
-from sklearn.linear_model import LinearRegression
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestRegressor
-from sklearn.model_selection import GridSearchCV
-from logging import Logger
-from house_price.logger import configure_logger
 import pickle
+import shutil
+from logging import Logger
+
+import pandas as pd
+import sklearn
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import GridSearchCV
+from sklearn.tree import DecisionTreeRegressor
+
+from house_price.logger import configure_logger
 
 model_names = ["lin_model", "tree_model", "forest_model", "grid_search_model"]
 
 
 def get_path():
+    """Gets the Current Working Directory"""
     path_parent = os.getcwd()
     while os.path.basename(os.getcwd()) != "mle-training":
         path_parent = os.path.dirname(os.getcwd())
@@ -24,6 +30,16 @@ def get_path():
 
 
 def parse_args():
+    """Commandline argument parser for standalone run.
+    Returns
+    -------
+    arparse.Namespace
+        Commandline arguments. Contains keys: ["dataset input path": str,
+         "dataset output path": str,
+         "log_level": str,
+         "no_console_log": bool,
+         "log_path": str]
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--inputpath",
@@ -41,6 +57,24 @@ def parse_args():
 
 
 def train(housing_prepared, housing_labels):
+    """Train the X DataFrame and Y Series.
+    Parameters
+    ----------
+    pd.DataFrame : str
+        A DataFrame X for Model Training.
+    pd.Series : str
+        A Series Y for Model Training .
+    
+    Returns
+    -------
+    tuple[sklearn.linear_model.LinearRegression, sklearn.tree.DecisionTreeRegressor,
+          sklearn.ensemble.RandomForestRegressor, sklearn.model_selection.GridSearchCV
+          ]
+        Index 0 is the  Linear Regression model.
+        Index 1 is the Decision Tree Model.
+        Index 2 is the Random Forest Model.
+        Index 3 is the Grid Search Model.
+    """
     lin_reg = LinearRegression()
     lin_reg.fit(housing_prepared, housing_labels)
 
@@ -70,6 +104,17 @@ def train(housing_prepared, housing_labels):
 
 
 def load_data(in_path):
+    """Loads dataset and splits features and labels.
+    Parameters
+    ----------
+    path : str
+        Path to training dataset csv file.
+    Returns
+    -------
+    tuple[pd.DataFrame, pd.Series]
+        Index 0 is the training features dataframe.
+        Index 1 is the training labels series.
+    """
     prepared = pd.read_csv(in_path + "/train_X.csv")
     lables = pd.read_csv(in_path + "/train_y.csv")
     lables = lables.values.ravel()
@@ -77,12 +122,14 @@ def load_data(in_path):
 
 
 def rem_artifacts(out_path):
-    for i in model_names:
-        if os.path.exists(out_path + "/" + i):
-            shutil.rmtree(out_path + "/" + i)
+    if os.path.exists(out_path + "/models"):
+        shutil.rmtree(out_path + "/models")
 
 
 def model(lin_reg, tree_reg, forest_reg, grid_search, out_path):
+    """Saves the given model in given directory as pickle file.
+    """
+
     out_path = out_path + "/models"
     os.makedirs(out_path)
     pickle.dump(lin_reg, open(out_path + "/lin_model.pkl", "wb"))
@@ -92,7 +139,8 @@ def model(lin_reg, tree_reg, forest_reg, grid_search, out_path):
 
 
 if __name__ == "__main__":
-
+    """Runs the whole training process according to given commandline arguments.
+    """
     args = parse_args()
     logger = configure_logger(
         log_level=args.log_level,

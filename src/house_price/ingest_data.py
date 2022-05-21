@@ -1,15 +1,20 @@
+"""
+This module contains helper functions for ingestion of data.
+Running this standalone downloads the housing data and stores preprocessed copies of it in the specified folders.
+"""
+
 import argparse
-import pandas as pd
-import numpy as np
 import os
 import tarfile
-from six.moves import urllib
-from sklearn.model_selection import train_test_split
-from sklearn.model_selection import StratifiedShuffleSplit
-from sklearn.impute import SimpleImputer
 from logging import Logger
-from house_price.logger import configure_logger
 
+import numpy as np
+import pandas as pd
+from six.moves import urllib
+from sklearn.impute import SimpleImputer
+from sklearn.model_selection import StratifiedShuffleSplit, train_test_split
+
+from house_price.logger import configure_logger
 
 DOWNLOAD_ROOT = "https://raw.githubusercontent.com/ageron/handson-ml/master/"
 HOUSING_PATH = os.path.join("data/raw", "housing")
@@ -18,6 +23,14 @@ imputer = SimpleImputer(strategy="median")
 
 
 def fetch_housing_data(housing_url=HOUSING_URL, housing_path=HOUSING_PATH):
+    """Function to download and extract housing data.
+    Parameters
+    ----------
+    housing_url : str
+        Url to download the housing data from.
+    housing_path : str
+        Path to store the raw csv files after extraction.
+    """
     os.makedirs(housing_path, exist_ok=True)
     tgz_path = os.path.join(housing_path, "housing.tgz")
     urllib.request.urlretrieve(housing_url, tgz_path)
@@ -36,6 +49,18 @@ def income_cat_proportions(data):
 
 
 def train_test(housing):
+    """Does stratified shuffle split on "income_cat" attribute of housing data.
+
+    Parameters
+    ----------
+    base_df : pd.DataFrame
+        The dataframe to be split.
+
+    Returns
+    -------
+    tuple[pd.DataFrame, pd.DataFrame]
+        [train_dataset, test_dataset]
+    """
 
     train_set, test_set = train_test_split(housing, test_size=0.2, random_state=42)
 
@@ -73,6 +98,19 @@ def train_test(housing):
 
 
 def preprocess(strat_train_set):
+    """Preprocesses the given dataframe. Imputes missing values with median.
+    Replaces categorical column "ocean_proximity" with onehot dummy variables.
+    Parameters
+    ----------
+    df : pd.DataFrame
+        Dataframe to preprocess.
+    
+    Returns
+    -------
+    tuple[pd.DataFrame, pd.Series]
+        Index 0 is the training features dataframe.
+        Index 1 is the training labels series.
+    """
     housing = strat_train_set.copy()
 
     corr_matrix = housing.corr()
@@ -108,6 +146,16 @@ def preprocess(strat_train_set):
 
 
 def parse_args():
+    """Commandline argument parser for standalone run.
+    Returns
+    -------
+    arparse.Namespace
+        Commandline arguments. Contains keys: ["raw": str,
+         "processed": str,
+         "log_level": str,
+         "no_console_log": bool,
+         "log_path": str]
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--datapath",
@@ -117,9 +165,9 @@ def parse_args():
     )
     parser.add_argument(
         "--dataprocessed",
-        help="path to store the dataset ",
         type=str,
         default="data/processed",
+        help="path to store the dataset ",
     )
     parser.add_argument("--log-level", type=str, default="DEBUG")
     parser.add_argument("--no-console-log", action="store_true")
@@ -128,6 +176,7 @@ def parse_args():
 
 
 def get_path():
+    """Gets the Current Working Directory"""
     path_parent = os.getcwd()
     while os.path.basename(os.getcwd()) != "mle-training":
         path_parent = os.path.dirname(os.getcwd())
@@ -136,6 +185,7 @@ def get_path():
 
 
 def save_preprocessed(train_X, train_y, test_X, test_y, processed):
+    """Saves the train and test csv files"""
     train_X.to_csv(os.path.join(processed, "train_X.csv"), index=False)
     train_y.to_csv(os.path.join(processed, "train_y.csv"), index=False)
     test_X.to_csv(os.path.join(processed, "test_X.csv"), index=False)
@@ -143,6 +193,8 @@ def save_preprocessed(train_X, train_y, test_X, test_y, processed):
 
 
 if __name__ == "__main__":
+    """Does all the ingesting work (fetching, splitting, preprocessing).
+    """
     args = parse_args()
     logger = configure_logger(
         log_level=args.log_level,

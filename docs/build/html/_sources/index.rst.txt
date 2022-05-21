@@ -1,5 +1,5 @@
 .. house_price documentation master file, created by
-   sphinx-quickstart on Fri May 20 14:55:16 2022.
+   sphinx-quickstart on Sat May 21 13:10:20 2022.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 

@@ -1,15 +1,18 @@
+"""
+This module contains helper functions to score the models.
+Can be run standalone with commandline arguments for models and the datasets to score them on.
+"""
 import argparse
 import os
 import pickle
-
+from logging import Logger
 
 import numpy as np
 import pandas as pd
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import mean_absolute_error, mean_squared_error
-from logging import Logger
-from house_price.logger import configure_logger
 
+from house_price.logger import configure_logger
 
 model_names = ["lin_model", "tree_model", "forest_model", "grid_search_model"]
 
@@ -23,6 +26,16 @@ def get_path():
 
 
 def parse_args():
+    """Commandline argument parser for standalone run.
+    Returns
+    -------
+    arparse.Namespace
+        Commandline arguments. Contains keys: ["dataset": str,
+         "models": str,
+         "log_level": str,
+         "no_console_log": bool,
+         "log_path": str]
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--datapath", help="path to the datasets ", type=str, default="data/processed"
@@ -37,6 +50,7 @@ def parse_args():
 
 
 def scoring(X_test, y_test, lin_reg, tree_reg, forest_reg, grid_search):
+    """Predicts the Model and scores based on RMSE, MAE"""
 
     lin_predictions = lin_reg.predict(X_test)
     lin_mse = mean_squared_error(y_test, lin_predictions)
@@ -67,6 +81,17 @@ def scoring(X_test, y_test, lin_reg, tree_reg, forest_reg, grid_search):
 
 
 def load_data(in_path):
+    """Loads dataset and splits features and labels.
+    Parameters
+    ----------
+    path : str
+        Path to training dataset csv file.
+    Returns
+    -------
+    tuple[pd.DataFrame, pd.Series]
+        Index 0 is the testing features dataframe.
+        Index 1 is the testing labels series.
+    """
     prepared = pd.read_csv(in_path + "/test_X.csv")
     lables = pd.read_csv(in_path + "/test_y.csv")
     lables = lables.values.ravel()
@@ -74,6 +99,16 @@ def load_data(in_path):
 
 
 def load_models(model_path):
+    """Loads models from given directory path.
+    Parameters
+    ----------
+    path : str
+        Path to directory with model pkl files.
+    Returns
+    -------
+    list[sklearn.base.BaseEstimator]
+        List of models loaded from pkl files in directory.
+    """
     models = []
     for i in model_names:
         with open(model_path + "/models/" + i + ".pkl", "rb") as f:
@@ -82,6 +117,21 @@ def load_models(model_path):
 
 
 def score(models, X_test, y_test):
+    """Scores given model on given data.
+    Parameters
+    ----------
+    model : sklearn.base.BaseEstimator
+        Estimator to score.
+    X : pd.DataFrame
+        Input features dataframe.
+    y : pd.Series
+        Ground truth labels.
+    
+    Returns
+    -------
+    list[sklearn.base.BaseEstimator]
+        List of models loaded from pkl files in directory.
+    """
 
     lin_scores, tree_scores, forest_scores, grid_search_scores = scoring(
         X_test, y_test, models[0], models[1], models[2], models[3]
@@ -91,6 +141,8 @@ def score(models, X_test, y_test):
 
 
 if __name__ == "__main__":
+    """Runs the whole scoring process according to the given commandline arguments.
+    """
 
     args = parse_args()
     logger = configure_logger(

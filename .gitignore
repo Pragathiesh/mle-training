@@ -1,9 +1,11 @@
 *.csv
 *.pyc
 *.tgz
-artifacts/**
+*.log
+artifacts/models/**
 build/**
 dist/**
 src/house_price.egg-info/**
-log/**
 outputs/**
+.flake8
+.vscode/**
